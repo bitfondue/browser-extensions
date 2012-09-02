@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>bitfondue options</title>
+	<script type="text/javascript">
+
+	function save_options(){
+		localStorage["username"] = document.getElementById("username");
+		localStorage["password"] = document.getElementById("password");
+
+		  // Update status to let user know options were saved.
+		  var status = document.getElementById("status");
+		  status.innerHTML = "Options Saved.";
+		  setTimeout(function() {
+		    status.innerHTML = "";
+		  }, 750);
+	}
+
+	function restore_options(){
+		var username = document.getElementById("username");
+		username.value = localStorage["username"];
+
+		var password = document.getElementById("password");
+		password.value = localStorage["password"];
+	}
+
+	</script>
+</head>
+<body onload="restore_options()">
+
+	<span id="status"></span>
+
+	<label for="username">Username:</label>&nbsp;<input type="text" name="username" id="username">
+	<br/>
+	<label for="password">Password:</label>&nbsp;<input type="text" name="password" id="password">
+	<br/><br/>
+	<button onclick="save_options()">Save</button>
+
+</body>
+</html>

@@ -23,5 +23,6 @@
     "pageCapture",
     "<all_urls>"
   ],
-  "manifest_version": 2
+  "manifest_version": 2,
+  "options_page": "options.html"
 }
