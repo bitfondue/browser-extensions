@@ -1,14 +1,27 @@
 {
   "name": "bitfondue",
-  "version": "1.0",
-  "manifest_version": 2,
-  "description": "The first extension that I made.",
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+  "version": "0.0.1",
+  "description": "Save with a single click.",
+  "background": {
+    "page": "background.html"
   },
+  "icons": {
+    "16": "bitfondue-icon-chrome-extension_16.png",
+    "48": "bitfondue-icon-chrome-extension_48.png",
+    "128": "bitfondue-icon-chrome-extension_128.png"
+  },
+  "browser_action": {
+    "default_icon": "bitfondue-icon-chrome-extension_19.png",
+    "default_title": "Save this site"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content_script.js"]
+  }],
   "permissions": [
     "tabs",
-    "http://api.flickr.com/"
-  ]
+    "pageCapture",
+    "<all_urls>"
+  ],
+  "manifest_version": 2
 }
