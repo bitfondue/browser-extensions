@@ -1,4 +1,8 @@
 chrome.browserAction.onClicked.addListener(function(tab){
+	chrome.browserAction.setBadgeText({
+		text: "..."
+	});
+
 	chrome.tabs.captureVisibleTab(null, {format: "png"}, function(dataUrl){
 
 		var xhr = new XMLHttpRequest();
@@ -7,8 +11,8 @@ chrome.browserAction.onClicked.addListener(function(tab){
 		formData.append("password", localStorage["password"]);
 		formData.append("img", dataUrl);
 
-		// xhr.open("POST", "https://bitfondue-api.herokuapp.com/upload", true);
-		xhr.open("POST", "http://localhost:5000/upload", true);
+		xhr.open("POST", "https://bitfondue-api.herokuapp.com/upload", true);
+		// xhr.open("POST", "http://localhost:5000/upload", true);
 
 		chrome.tabs.getSelected(null, function(tab){
 			formData.append("tab_info", JSON.stringify(tab));
@@ -21,6 +25,19 @@ chrome.browserAction.onClicked.addListener(function(tab){
 				console.log(response);
 				if(response.method == "getHTML"){
 					formData.append("html", response.data);
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							chrome.browserAction.setBadgeText({
+								text: "ok"
+							});
+
+							setTimeout(function(){
+								chrome.browserAction.setBadgeText({
+									text: ""
+								})
+							}, 2000);
+						}
+					};
 					xhr.send(formData);
 				}
 			});
