@@ -25,6 +25,7 @@ chrome.browserAction.onClicked.addListener(function(tab){
 				console.log(response);
 				if(response.method == "getHTML"){
 					formData.append("html", response.data);
+
 					xhr.onreadystatechange = function(){
 						if(xhr.readyState == 4){
 							chrome.browserAction.setBadgeText({
@@ -38,7 +39,15 @@ chrome.browserAction.onClicked.addListener(function(tab){
 							}, 2000);
 						}
 					};
-					xhr.send(formData);
+
+					navigator.geolocation.getCurrentPosition(function(position){
+						console.log(position);
+						formData.append('geolocation', JSON.stringify(position));
+						xhr.send(formData);
+					}, function(positionError){
+						console.log(positionError);
+						xhr.send(formData);
+					});
 				}
 			});
 		});		
