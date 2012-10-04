@@ -11,8 +11,12 @@ chrome.browserAction.onClicked.addListener(function(tab){
 		formData.append("password", localStorage["password"]);
 		formData.append("img", dataUrl);
 
-		xhr.open("POST", "https://bitfondue-api.herokuapp.com/upload", true);
-		// xhr.open("POST", "http://localhost:5000/upload", true);
+		// check wether extension runs against production or dev API.
+		if(localStorage['endpoint'] === 'true'){
+			xhr.open("POST", "http://localhost:5000/upload", true);
+		} else {
+			xhr.open("POST", "https://bitfondue-api.herokuapp.com/upload", true);
+		}
 
 		chrome.tabs.getSelected(null, function(tab){
 			formData.append("tab_info", JSON.stringify(tab));
