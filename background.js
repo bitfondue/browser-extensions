@@ -8,6 +8,7 @@ chrome.browserAction.onClicked.addListener(function(tab){
 		var xhr = new XMLHttpRequest();
 		var formData = new FormData();
 		formData.append("username", localStorage["username"]);
+		formData.append("email", localStorage["email"]);
 		formData.append("password", localStorage["password"]);
 		formData.append("img", dataUrl);
 

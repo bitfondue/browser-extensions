@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 	// on load
 	$('#username').val(localStorage['username']);
+	$('#email').val(localStorage['email']);
 	$('#password').val(localStorage['password']);
 	if(localStorage['endpoint'] === 'true'){
 		$('#endpoint').prop('checked', true);
@@ -12,6 +13,7 @@ $(document).ready(function(){
 	// listen on the button click event
 	$('button').click(function(){
 		localStorage['username'] = $('#username').val();
+		localStorage['email'] = $('#email').val();
 		localStorage['password'] = $('#password').val();
 
 		if($('#endpoint').prop('checked') === true){
