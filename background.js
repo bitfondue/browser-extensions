@@ -28,10 +28,13 @@ chrome.browserAction.onClicked.addListener(function(tab){
 			// FETCH CONTENT FROM CURRENT TAB
 			chrome.tabs.sendRequest(tab.id, {method: "getHTML"}, function(response){
 				console.log(response);
+				console.log(response.method);
 				if(response.method == "getHTML"){
 					formData.append("html", response.data);
 
+					console.log('appended the html');
 					xhr.onreadystatechange = function(){
+						console.log(xhr.readyState);
 						if(xhr.readyState == 4){
 							chrome.browserAction.setBadgeText({
 								text: "ok"
@@ -49,9 +52,11 @@ chrome.browserAction.onClicked.addListener(function(tab){
 						console.log(position);
 						formData.append('geolocation', JSON.stringify(position));
 						xhr.send(formData);
+						console.log('sent the request');
 					}, function(positionError){
 						console.log(positionError);
 						xhr.send(formData);
+						console.log('sent the request');
 					});
 				}
 			});

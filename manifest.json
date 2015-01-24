@@ -20,8 +20,9 @@
   }],
   "permissions": [
     "tabs",
+    "desktopCapture",
     "pageCapture",
-    "<all_urls>",
+    "https://bitfondue-api.herokuapp.com/upload",
     "geolocation"
   ],
   "manifest_version": 2,
