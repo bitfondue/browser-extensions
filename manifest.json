@@ -23,7 +23,8 @@
     "desktopCapture",
     "pageCapture",
     "https://bitfondue-api.herokuapp.com/upload",
-    "geolocation"
+    "geolocation",
+    "activeTab"
   ],
   "manifest_version": 2,
   "options_page": "options.html"

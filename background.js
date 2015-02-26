@@ -48,16 +48,27 @@ chrome.browserAction.onClicked.addListener(function(tab){
 						}
 					};
 
-					navigator.geolocation.getCurrentPosition(function(position){
-						console.log(position);
-						formData.append('geolocation', JSON.stringify(position));
+					var sendPage = function(formData) {
 						xhr.send(formData);
 						console.log('sent the request');
-					}, function(positionError){
-						console.log(positionError);
-						xhr.send(formData);
-						console.log('sent the request');
-					});
+					};
+
+					// if (navigator.geolocation) {
+					// 	navigator.geolocation.getCurrentPosition(function(position){
+					// 		console.log(position);
+					// 		formData.append('geolocation', JSON.stringify(position));
+					// 		sendPage(formData);
+					// 	}, function(positionError){
+					// 		console.log(positionError);
+					// 		sendPage(formData);
+					// 	});
+					// } else {
+					// 	console.log('geolocation not supported');
+					// 	sendPage(formData);
+					// }
+
+					console.log('geolocation not supported for now');
+					sendPage(formData);
 				}
 			});
 		});		
