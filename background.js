@@ -14,9 +14,9 @@ chrome.browserAction.onClicked.addListener(function(tab){
 
 		// check wether extension runs against production or dev API.
 		if(localStorage['endpoint'] === 'true'){
-			xhr.open("POST", "http://localhost:5000/upload", true);
+			xhr.open("POST", "http://localhost:3000/upload", true);
 		} else {
-			xhr.open("POST", "https://bitfondue-api.herokuapp.com/upload", true);
+			xhr.open("POST", "https://api.bitfondue.com/upload", true);
 		}
 
 		chrome.tabs.getSelected(null, function(tab){
@@ -71,6 +71,6 @@ chrome.browserAction.onClicked.addListener(function(tab){
 					sendPage(formData);
 				}
 			});
-		});		
+		});
 	});
 });
