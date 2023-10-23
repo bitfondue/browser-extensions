@@ -1,0 +1,3 @@
+- remove desktopCapture and pageCapture from the manifest.json file
+- changed chrome.browserAction to browser.browserAction https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Toolbar_button
+- removed the options_page for now in the manifest.json as it doesn't seem to play well and in deprecated

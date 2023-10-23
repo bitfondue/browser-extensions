@@ -1,0 +1,36 @@
+{
+  "name": "bitfondue",
+  "version": "0.0.1",
+  "description": "Save with a single click.",
+  "background": {
+    "page": "background.html"
+  },
+  "icons": {
+    "16": "bitfondue-icon-chrome-extension_16.png",
+    "48": "bitfondue-icon-chrome-extension_48.png",
+    "128": "bitfondue-icon-chrome-extension_128.png"
+  },
+  "browser_action": {
+    "default_icon": "bitfondue-icon-chrome-extension_19.png",
+    "default_title": "Save this site"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content_script.js"]
+  }],
+  "permissions": [
+    "tabs",
+    "<all_urls>",
+    "https://bitfondue-api.herokuapp.com/upload",
+    "geolocation",
+    "activeTab"
+  ],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "MacCtrl+B"
+      }
+    }
+  },  
+  "manifest_version": 2  
+}
